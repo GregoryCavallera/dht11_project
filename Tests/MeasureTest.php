@@ -12,7 +12,7 @@ class MeasureTest extends TestCase {
     
     public function testMeasure() {
             
-        $measure = new Measure(15, 35);
+        $measure = new Measure(null, 15, 35, null);
         
         $this->assertEquals(15, $measure->temperature);
         $this->assertEquals(35, $measure->humidite);

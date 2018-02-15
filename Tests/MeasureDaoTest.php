@@ -2,14 +2,12 @@
 
 namespace Tests;
 
-use PHPUnit\Framework\TestCase;
-use Domain\Measure;
 use Dao\MeasureDao;
+use Domain\Measure;
+use PHPUnit\Framework\TestCase;
 
+include '../inc/autoload.inc.php';
 
-include 'autoloadTest.inc.php';
-
-PHPUnit\Framework\TestCase;
 
 class MeasureDaoTest extends TestCase {
     
@@ -22,7 +20,7 @@ class MeasureDaoTest extends TestCase {
         
         parent::setUp();
         
-        $config = include '../inc/config.inc';
+        $config = include '../inc/config.inc.php';
         
         $this->measureDao = new MeasureDao($config);
     }
@@ -39,14 +37,16 @@ class MeasureDaoTest extends TestCase {
     }
     
     
-    //  Test readMeasureById
+    //  Test readMeasureById  (Fonctionne !!)
     
     public function testReadMeasureById() {
         
         $measure = $this->measureDao->readMeasureById(2);
         
-        $this->assertEquals(20, $mesasure->temperature);
-        $this->assertEquals(20, $mesasure->humidity);
+        $this->assertEquals(2, $measure->id);
+        $this->assertEquals(25, $measure->temperature);
+        $this->assertEquals(65, $measure->humidity);
+        $this->assertNotNull($measure->datetime);
     }
     
     //  Test insertMeasure
@@ -60,7 +60,6 @@ class MeasureDaoTest extends TestCase {
         $newMeasure = $this->measureDao->readMeasureByID($measure->id);
         
         $this->assertEquals(15, $newMeasure->temperature);
-        
         $this->assertEquals(35, $newMeasure->humidity);
         
         $this->userDao->deleteUser($id);

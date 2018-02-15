@@ -6,7 +6,7 @@ use Domain\Measure;
 
 include "DaoBase.php";
 
-include 'autoloadTest.inc.php';
+include '../inc/autoload.inc.php';
 
 class MeasureDao extends DaoBase {
     
@@ -57,7 +57,7 @@ class MeasureDao extends DaoBase {
         
         $result;
         
-        $query = $this->bdd->prepare("SELECT temperature, humidity FROM measures WHERE id = :id");
+        $query = $this->bdd->prepare("SELECT id, temperature, humidity, datetime FROM measures WHERE id = :id");
         
         $query->bindParam(":id", $id);
         
@@ -65,10 +65,12 @@ class MeasureDao extends DaoBase {
             
             if ($donnees = $query->fetch()) {
                 
+                $id = $donnees["id"];
                 $temperature = $donnees["temperature"];
-                $humidite = $donnees["humidity"];
+                $humidity = $donnees["humidity"];
+                $datetime = $donnees["datetime"];
                 
-                $result = new Measure($temperature, $humidity);
+                $result = new Measure($id, $temperature, $humidity, $datetime);
             }
         }
         

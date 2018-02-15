@@ -8,18 +8,18 @@ class Measure {
     
     public $temperature;
     
-    public $humidite;
+    public $humidity;
     
     public $datetime;
     
     
-    public function __construct($id, $temperature, $humidite, $datetime) {
+    public function __construct($id, $temperature, $humidity, $datetime) {
         
         $this->id = $id;
         
         $this->temperature = $temperature;
         
-        $this->humidite = $humidite;
+        $this->humidity = $humidity;
         
         $this->datetime = $datetime;
     }    
