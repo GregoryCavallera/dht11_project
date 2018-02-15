@@ -12,4 +12,9 @@ class DaoBase {
             $config['db.user'],
             $config['db.password']);
     }
+    
+    public function close() {
+        
+        $this->bdd = null;
+    }
 }

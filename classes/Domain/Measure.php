@@ -16,8 +16,11 @@ class Measure {
     public function __construct($id, $temperature, $humidite, $datetime) {
         
         $this->id = $id;
+        
         $this->temperature = $temperature;
+        
         $this->humidite = $humidite;
+        
         $this->datetime = $datetime;
     }    
 }

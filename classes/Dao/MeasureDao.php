@@ -6,9 +6,10 @@ use Domain\Measure;
 
 include "DaoBase.php";
 
-include '../inc/autoload.inc.php';
+include 'autoloadTest.inc.php';
 
 class MeasureDao extends DaoBase {
+    
 
     public function __construct($config) {
 

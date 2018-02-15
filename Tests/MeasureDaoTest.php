@@ -3,8 +3,9 @@
 namespace Tests;
 
 use PHPUnit\Framework\TestCase;
-use Dao\MeasureDao;
 use Domain\Measure;
+use Dao\MeasureDao;
+
 
 include 'autoloadTest.inc.php';
 
@@ -12,7 +13,7 @@ PHPUnit\Framework\TestCase;
 
 class MeasureDaoTest extends TestCase {
     
-    private $testMeasureDao;
+    private $measureDao;
     
     /**
      * Prepares the environment before running a test.
@@ -42,13 +43,10 @@ class MeasureDaoTest extends TestCase {
     
     public function testReadMeasureById() {
         
-        $user = $this->userDao->findUserById(1);
+        $measure = $this->measureDao->readMeasureById(2);
         
-        $this->assertEquals("Remy", $user->firstName);
-        
-        $this->assertEquals("Girodon", $user->lastName);
-        
-        
+        $this->assertEquals(20, $mesasure->temperature);
+        $this->assertEquals(20, $mesasure->humidity);
     }
     
     //  Test insertMeasure
